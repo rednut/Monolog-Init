@@ -86,6 +86,14 @@ class MonologInit
         }
     }
 
+    public function initRedisHandler($args) {
+        $reflect  = new \ReflectionClass('\Monolog\Handler\RedisHandler');
+        $redis = new \Redis();
+        $redis->connect(array_shift($args));
+        array_unshift($args, $redis);
+        return $reflect->newInstanceArgs($args);
+    } 
+
     public function initCubeHandler($args)
     {
         $reflect  = new \ReflectionClass('\Monolog\Handler\CubeHandler');
