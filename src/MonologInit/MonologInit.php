@@ -19,6 +19,7 @@
 namespace MonologInit;
 
 use Monolog\Handler;
+use Monolog\Formatter\LogstashFormatter;
 
 class MonologInit
 {
@@ -60,7 +61,13 @@ class MonologInit
         $handlerClassName = $handler . 'Handler';
 
         if (class_exists('\Monolog\Logger') && class_exists('\Monolog\Handler\\' . $handlerClassName)) {
-            if (null !== $handlerInstance = $this->createHandlerInstance($handlerClassName, $target)) {
+
+            if (null !== $handlerInstance = $this->createHandlerInstance($handlerClassName, $target)) {a
+
+                $handlerInstance->setFormatter(
+                  new LogstashFormatter(getenv('REDIS_NAMESPACE'), gethostname())
+                );
+
                 $this->instance = new \Monolog\Logger('main');
                 $this->instance->pushHandler($handlerInstance);
             }
