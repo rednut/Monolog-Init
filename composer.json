@@ -22,6 +22,7 @@
 		"source": "https://github.com/kamisama/monolog-init"
 	},
 	"autoload": {
-        "psr-0": {"MonologInit": "src/"}
+        	"psr-0": {"MonologInit": "src/"}
+	}
     }
 }
