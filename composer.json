@@ -1,9 +1,9 @@
 {
-	"name": "kamisama/monolog-init",
+	"name": "rednut/monolog-init",
 	"type": "library",
 	"description": "Very basic and light Dependency Injector Container for Monolog",
 	"keywords": ["log"],
-	"homepage": "http://www.github.com/kamisama/monolog-init/",
+	"homepage": "http://www.github.com/rednut/monolog-init/",
 	"license": "MIT",
 	"authors": [
 		{
