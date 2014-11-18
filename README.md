@@ -1,6 +1,8 @@
 Monolog-Init
 ============
 
+* REDNUT CUSTOMISED TO USE REDIS * 
+
 Very basic and light Dependency Injector Container for Monolog
 
 Helps create the following handler
