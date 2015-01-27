@@ -62,7 +62,7 @@ class MonologInit
 
         if (class_exists('\Monolog\Logger') && class_exists('\Monolog\Handler\\' . $handlerClassName)) {
 
-            if (null !== $handlerInstance = $this->createHandlerInstance($handlerClassName, $target)) {a
+            if (null !== $handlerInstance = $this->createHandlerInstance($handlerClassName, $target)) {
 
                 $handlerInstance->setFormatter(
                   new LogstashFormatter(getenv('REDIS_NAMESPACE'), gethostname())
