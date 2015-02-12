@@ -62,10 +62,26 @@ class MonologInit
 
         if (class_exists('\Monolog\Logger') && class_exists('\Monolog\Handler\\' . $handlerClassName)) {
 
-            if (null !== $handlerInstance = $this->createHandlerInstance($handlerClassName, $target)) {a
+            if (null !== $handlerInstance = $this->createHandlerInstance($handlerClassName, $target)) {
 
+                $redis_namespace = getenv('REDIS_NAMESPACE');
+                if (!$redis_namespace) {
+                    $redis_namespace = "rescue";
+                }
+
+                $system_name = gethostname();
+
+                $context_prefix = getenv('LOG_CONTEXT_PREFIX');
+                if (!$context_prefix) {
+                    $context_prefix = '';
+                }
+
+                $extra_prefix = '';
+
+                
                 $handlerInstance->setFormatter(
-                  new LogstashFormatter(getenv('REDIS_NAMESPACE'), gethostname())
+                    new LogstashFormatter(
+                        $redis_namespace, $system_name, $extra_prefix, $context_prefix)
                 );
 
                 $this->instance = new \Monolog\Logger('main');
